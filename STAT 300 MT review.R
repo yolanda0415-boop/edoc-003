@@ -24,6 +24,18 @@ p_value
 #x= T = number of +'s in the di data
 binom.test(x=T, n=n, p=0.5, alternative="two.sided")
 
+#############################################################################################
+
+##Wilcoxon rank sum test
+female_bill_length <- subset(penguins, sex == 'female')$bill_length_mm
+male_bill_length <- subset(penguins, sex == 'male')$bill_length_mm
+
+wilcox.test(female_bill_length, male_bill_length)
+wilcox.test(female_bill_length, male_bill_length, alternative = "greater")
+wilcox.test(female_bill_length, male_bill_length, alternative = "less")
+#总结：wilcox.test(A,B,alternative=?)
+
+#############################################################################################
 
 ##   KW test---
 a <- c(1,2,3)
@@ -43,6 +55,8 @@ kruskal.test(data~ factor)
 
 pchiq(H,df,lower.tail=FALSE)
 
+#############################################################################################
+
 ## permutation test
 
 x = c(rep(0,17), rep(1,2), 2)
@@ -56,6 +70,41 @@ perm.test(x, y, paired=FALSE,
 perm.test(x, y,paired = F,alternative = "less")
 
 
+#############################################################################################
+
+#Power of test
+#Use the function: 
+dbinom(x, size, prob)
+#x: a vector of quantile values (eg. vector of number of successes)
+#size: the number of trials
+#prob: the probability of success on each trial 
+
+#example 1
+#To find Pr(T=8), given thatT∼B(10,0.5)
+dbinom(8, 10, 0.5)
+
+#example 2
+#To find Pr(T>=8), given thatT∼B(10,0.5)
+dbinom(8, 10, 0.5) + dbinom(9, 10, 0.5) + dbinom(10, 10, 0.5)]
+#or
+sum(dbinom(c(8,9,10), 10, 0.3))
+#or
+pbinom(7, 10, 0.5, lower.tail=FALSE)
+
+#plotting power function curve
+#To create a power function curve
+curve(pbinom(7, 10, x, lower.tail=FALSE), 0, 1) #0, 1 indicates plot x from 0 to 1
+
+#additional info
+#Compute the power of the one- or two- sample t test, 
+#or determine parameters to obtain a target power
+?power.t.test
+power.t.test(n = NULL, delta = NULL, sd = 1, sig.level = 0.05,
+             power = NULL,
+             type = c("two.sample", "one.sample", "paired"),
+             alternative = c("two.sided", "one.sided"))
+
+#############################################################################################
 
 ## One Way anova
 # Or, if .csv file, use this(请提前自行建立,已发群)
@@ -75,16 +124,7 @@ res.aov <- aov(data ~ Type, data = my_data)
 # Summary of the analysis
 summary(res.aov)
 
-
-##Wilcoxon rank sum test
-female_bill_length <- subset(penguins, sex == 'female')$bill_length_mm
-male_bill_length <- subset(penguins, sex == 'male')$bill_length_mm
-
-wilcox.test(female_bill_length, male_bill_length)
-wilcox.test(female_bill_length, male_bill_length, alternative = "greater")
-wilcox.test(female_bill_length, male_bill_length, alternative = "less")
-#总结：wilcox.test(A,B,alternative=?)
-
+#############################################################################################
 
 #QQplots
 #Nomally Distributed QQ plot
@@ -150,6 +190,8 @@ qqline(thin_tails, col = "blue", lwd = 2)
 ##如果QQplot是一条直线的话，呢么我们可以说他的data是Normal Distributed的
 ##xi=s*zi+bar(x) 
 ##xi是given data, zi是normal scores,bar(x)是sample mean, s（slope）是sample sd
+
+#############################################################################################
 
 # 2way ANOVA
 # 列出四组data, 每组个数为x
