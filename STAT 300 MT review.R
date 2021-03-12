@@ -76,3 +76,11 @@ res.aov <- aov(data ~ Type, data = my_data)
 summary(res.aov)
 
 
+##Wilcoxon rank sum test
+female_bill_length <- subset(penguins, sex == 'female')$bill_length_mm
+male_bill_length <- subset(penguins, sex == 'male')$bill_length_mm
+
+wilcox.test(female_bill_length, male_bill_length)
+wilcox.test(female_bill_length, male_bill_length, alternative = "greater")
+wilcox.test(female_bill_length, male_bill_length, alternative = "less")
+#总结：wilcox.test(A,B,alternative=?)
