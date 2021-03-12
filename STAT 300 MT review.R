@@ -45,7 +45,7 @@ data <- c(a,b,c)
 #把每一组data用C()组合到一起
 factor <- c(rep(1,3), rep(2,3), rep(3,4))
 #建立对应的factor
-kruskal.test(data~ factor) 
+kruskal.t est(data~ factor) 
 #H0: all groups have same distribution
 
 #手算版本
@@ -206,3 +206,17 @@ table<-data.frame(column1=c(data1,data2,data3,data4),
 table
 #summary
 summary(aov(column1~column2*column3, data=table))
+#############################################################################################
+
+# Power
+# 用dbinom or pbinom.
+# x: number of successes
+# size: the number of trials
+# prob: the probability of success on each trial.
+dbinom(x, size, prob)
+
+# 默认计算the probability for the lower tail (P[X≤x])
+# 用lower.tail = FALSE) 计算P[X > x].
+# 比如
+pbinom(7, 10, 0.3, lower.tail = FALSE)
+
