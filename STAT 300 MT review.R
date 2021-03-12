@@ -157,7 +157,7 @@ data1<-c(....)
 data2<-c(....)
 data3<-c(....)
 data4<-c(....)
-# Combine these grades in a data frame with columns into a table
+# Combine these data in a data frame with columns into a table
 table<-data.frame(column1=c(data1,data2,data3,data4), 
                   column2=rep(c("",""), each=x)) #引号内写column2包含的种类
 table
