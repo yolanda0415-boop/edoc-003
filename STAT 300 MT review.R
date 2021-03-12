@@ -56,3 +56,4 @@ male_bill_length <- subset(penguins, sex == 'male')$bill_length_mm
 wilcox.test(female_bill_length, male_bill_length)
 wilcox.test(female_bill_length, male_bill_length, alternative = "greater")
 wilcox.test(female_bill_length, male_bill_length, alternative = "less")
+#总结：wilcox.test(A,B,alternative=?)
