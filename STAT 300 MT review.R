@@ -150,3 +150,16 @@ qqline(thin_tails, col = "blue", lwd = 2)
 ##如果QQplot是一条直线的话，呢么我们可以说他的data是Normal Distributed的
 ##xi=s*zi+bar(x) 
 ##xi是given data, zi是normal scores,bar(x)是sample mean, s（slope）是sample sd
+
+# 2way ANOVA
+# 列出四组data, 每组个数为x
+data1<-c(....)
+data2<-c(....)
+data3<-c(....)
+data4<-c(....)
+# Combine these grades in a data frame with columns into a table
+table<-data.frame(column1=c(data1,data2,data3,data4), 
+                  column2=rep(c("",""), each=x)) #引号内写column2包含的种类
+table
+#summary
+summary(aov(column1~column2, data=table))
