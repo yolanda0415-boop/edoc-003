@@ -1,3 +1,30 @@
+## the signed test------
+
+# One sample H0: theta= theta0
+# yi = xi-theta0
+# T = number of +'s in the yi data
+
+# Paired sample H0: theta1= theta2
+# di = xi-yi
+# T = number of +'s in the di data
+
+#step 1: remove 相减之差等于0的项
+#step 2: sample size n = 所有data-相减之差等于0的项
+
+# greater 
+pbinom(T, n, 0.5, lower.tail = FALSE)
+# less
+pbinom(T, n, 0.5)
+# two-sided
+# T1 = number of +'s in the yi data
+# 找到对应的T2
+p_value<-pbinom(T1, n, 0.5)+pbinom(T2, n, 0.5, lower.tail = FALSE)
+p_value
+#或者用下面这个test
+#x= T = number of +'s in the di data
+binom.test(x=T, n=n, p=0.5, alternative="two.sided")
+
+
 ##   KW test---
 a <- c(1,2,3)
 b <- c(3,5,9)
