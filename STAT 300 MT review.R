@@ -24,6 +24,18 @@ p_value
 #x= T = number of +'s in the di data
 binom.test(x=T, n=n, p=0.5, alternative="two.sided")
 
+
+#############################################################################################
+
+#signed rank test
+
+#计算|yi-xi| 按小到大排序
+T stat= T+ = yi>xi的所有rank相加！即yi-xi为正
+#将rank比如1 2 3 4的所有正负可能性list一遍 
+#如下一个就是-1 2 3 4 一直到-1 -2 -3 -4
+#找与T+相同或更极端的数（根据题意 ）
+p-value= # of 极端的数/# of 所有regrouping的方式
+
 #############################################################################################
 
 ##Wilcoxon rank sum test
@@ -103,6 +115,26 @@ power.t.test(n = NULL, delta = NULL, sd = 1, sig.level = 0.05,
              power = NULL,
              type = c("two.sample", "one.sample", "paired"),
              alternative = c("two.sided", "one.sided"))
+
+#############################################################################################
+
+#fisher exact test
+#e11是2x2左上角的值
+z score=e11
+#probability of observed value, P(Z=x):
+choose(C1,x)*choose(C2,R1-x)/choose(n,R1)
+#例子,P(Z=2) 替换x为2 C1,C2,R1永远不变
+choose(C1,2)*choose(C2,R1-2)/choose(n,R1)
+
+#计算和对比两者的p-value
+
+#nrow记得替换 就是看有几行
+fisher.test(matrix(c(matrix),nrow=x,byrow=TRUE))
+#例子
+fisher.test(matrix(c(3,6,9,2),nrow=2,byrow=TRUE))
+chisq.test(matrix(c(matrix),nrow=x,byrow=TRUE),correct=FALSE)
+#例子
+chisq.test(matrix(c(3,6,9,2),nrow=2,byrow=TRUE),correct=FALSE)
 
 #############################################################################################
 
