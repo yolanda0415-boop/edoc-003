@@ -159,7 +159,8 @@ data3<-c(....)
 data4<-c(....)
 # Combine these data in a data frame with columns into a table
 table<-data.frame(column1=c(data1,data2,data3,data4), 
-                  column2=rep(c("",""), each=x)) #引号内写column2包含的种类
+                  column2=rep(c("",""), each=x),
+                  column3= rep(c("",""), each=2x)) #引号内写column包含的种类, each后面的数字需要结合题意
 table
 #summary
-summary(aov(column1~column2, data=table))
+summary(aov(column1~column2*column3, data=table))
