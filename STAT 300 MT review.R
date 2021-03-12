@@ -1,4 +1,4 @@
-## the signed test------
+## the sign test------
 
 # One sample H0: theta= theta0
 # yi = xi-theta0
@@ -12,16 +12,10 @@
 #step 2: sample size n = 所有data-相减之差等于0的项
 
 # greater 
-pbinom(T, n, 0.5, lower.tail = FALSE)
+binom.test(x=T, n=n, p=0.5, alternative="greater")
 # less
-pbinom(T, n, 0.5)
+binom.test(x=T, n=n, p=0.5, alternative="less")
 # two-sided
-# T1 = number of +'s in the yi data
-# 找到对应的T2
-p_value<-pbinom(T1, n, 0.5)+pbinom(T2, n, 0.5, lower.tail = FALSE)
-p_value
-#或者用下面这个test
-#x= T = number of +'s in the di data
 binom.test(x=T, n=n, p=0.5, alternative="two.sided")
 
 
